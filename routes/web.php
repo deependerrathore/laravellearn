@@ -11,10 +11,24 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::view('/','welcome');
 
 Route::view('contact','contact');
 
 Route::view('about','about');
+
+Route::get('/customers',function (){
+    $customers = [
+        'Deepender',
+        'Narender',
+        'Indu'
+    ];
+    $package = [
+        '100',
+        '200'
+    ];
+    return view('internals.customers',[
+        'customers' => $customers,
+        'package' => $package
+    ]);
+});
