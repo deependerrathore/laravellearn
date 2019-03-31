@@ -23,12 +23,8 @@ Route::get('/customers',function (){
         'Narender',
         'Indu'
     ];
-    $package = [
-        '100',
-        '200'
-    ];
+
     return view('internals.customers',[
         'customers' => $customers,
-        'package' => $package
     ]);
 });
