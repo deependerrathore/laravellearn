@@ -17,14 +17,4 @@ Route::view('contact','contact');
 
 Route::view('about','about');
 
-Route::get('/customers',function (){
-    $customers = [
-        'Deepender',
-        'Narender',
-        'Indu'
-    ];
-
-    return view('internals.customers',[
-        'customers' => $customers,
-    ]);
-});
+Route::get('/customers','CustomersController@list');
