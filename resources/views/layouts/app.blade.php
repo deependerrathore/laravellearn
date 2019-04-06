@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Laravel</title>
+    <title>@yield('title','Learn Laravel')</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -17,8 +17,8 @@
     @yield('styles')
 </head>
 <body>
-    @include('_includes.nav.main')
     <div id="app" class="container">
+    @include('_includes.nav.main')
         @yield('content')
     </div>
     <script src="{{asset('js/app.js')}}"></script>
