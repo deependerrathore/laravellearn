@@ -8,10 +8,12 @@ use Illuminate\Http\Request;
 class CustomersController extends Controller
 {
     public function list(){
-        $customers = Customer::all();
+        $activeCustomers = Customer::where('active',1)->get();
+        $inactiveCustomers = Customer::where('active',0)->get();
 
         return view('internals.customers',[
-            'customers' => $customers,
+            'activeCustomers' => $activeCustomers,
+            'inactiveCustomers' => $inactiveCustomers
         ]);
     }
 

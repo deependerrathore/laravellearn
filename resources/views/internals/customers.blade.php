@@ -37,22 +37,18 @@
     <hr>
     <div class="row">
         <div class="col-6">
-            Active
+            <h3>Active</h3>
             <ul>
-                @foreach($customers as $customer)
-                    @if($customer->active == 1)
+                @foreach($activeCustomers as $customer)
                     <li>{{$customer->name}} ~  <span class="text-muted">{{$customer->email}}</span> </li>
-                    @endif
                 @endforeach
             </ul>
         </div>
         <div class="col-6">
-            Inactive
+            <h3>Inactive</h3>
             <ul>
-                @foreach($customers as $customer)
-                    @if($customer->active == 0)
+                @foreach($inactiveCustomers as $customer)
                     <li>{{$customer->name}} ~  <span class="text-muted">{{$customer->email}}</span> </li>
-                    @endif
                 @endforeach
             </ul>
         </div>
