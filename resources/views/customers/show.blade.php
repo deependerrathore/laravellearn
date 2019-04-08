@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-12">
             <h1>{{$customer->name}} Detail</h1>
-            <p><a href="/customers/">Go to all customers</a></p>
+            <p><a href="/customers/{{$customer->id}}/edit">Edit Details</a></p>
         </div>
     </div>
     <div class="row">
