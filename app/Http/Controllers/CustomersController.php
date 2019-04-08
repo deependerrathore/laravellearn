@@ -39,7 +39,7 @@ class CustomersController extends Controller
         return redirect('/customers/'.$customer->id);
     }
 
-    public function delete(Customer $customer){
+    public function destroy(Customer $customer){
         $customer->delete();
         return redirect('/customers');
     }
