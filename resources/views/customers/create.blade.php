@@ -1,14 +1,16 @@
 @extends('layouts.app')
-@section('title','Customers List')
+
+@section('title','Add New Customer')
+
 @section('content')
     <div class="row">
         <div class="col-12">
-            <h1>Customers List</h1>
+            <h1>Add New Customers</h1>
         </div>
     </div>
     <div class="row">
         <div class="col-12">
-            <form action="customers" method="POST">
+            <form action="/customers" method="POST">
                 @csrf
                 <div class="form-group">
                     <label for="name">Name</label>
@@ -28,7 +30,7 @@
                         <option value="0">Inactive</option>
                     </select>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="company">Company</label>
                     <select class="form-control" name="company_id" id="company">
@@ -43,35 +45,4 @@
         </div>
     </div>
 
-    <hr>
-    <div class="row">
-        <div class="col-6">
-            <h3>Active</h3>
-            <ul>
-                @foreach($activeCustomers as $customer)
-                    <li>{{$customer->name}} ~  <span class="text-muted">{{$customer->company->name}}</span> </li>
-                @endforeach
-            </ul>
-        </div>
-        <div class="col-6">
-            <h3>Inactive</h3>
-            <ul>
-                @foreach($inactiveCustomers as $customer)
-                    <li>{{$customer->name}} ~  <span class="text-muted">{{$customer->company->name}}</span> </li>
-                @endforeach
-            </ul>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                @foreach($companies as $company)
-                    <h3>{{$company->name}}</h3>
-                    @foreach($company->customers as $customer)
-                        <ul>
-                            <li>{{$customer->name}}</li>
-                        </ul>
-                    @endforeach
-                @endforeach
-            </div>
-        </div>
-    </div>
 @endsection

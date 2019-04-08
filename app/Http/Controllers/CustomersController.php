@@ -8,13 +8,17 @@ use Illuminate\Http\Request;
 
 class CustomersController extends Controller
 {
-    public function list(){
+    public function index(){
         $activeCustomers = Customer::active()->get();
         $inactiveCustomers = Customer::inactive()->get();
         $companies = Company::all();
-        return view('internals.customers',compact('activeCustomers','inactiveCustomers','companies'));
+        return view('customers.index',compact('activeCustomers','inactiveCustomers','companies'));
     }
 
+    public function create(){
+        $companies = Company::all();
+        return view('customers.create',compact('companies'));
+    }
     public function store(){
 
         $data = request()->validate([
@@ -24,7 +28,7 @@ class CustomersController extends Controller
             'company_id' => 'required'
         ]);
         Customer::create($data);
-        return back();
+        return redirect('customers');
 
     }
 }
