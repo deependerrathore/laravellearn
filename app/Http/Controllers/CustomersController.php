@@ -30,8 +30,7 @@ class CustomersController extends Controller
 
     }
 
-    public function show($customer){
-        $customer = Customer::where('id',$customer)->firstOrFail();
+    public function show(Customer $customer){
         return view('customers.show',compact('customer'));
     }
 }
