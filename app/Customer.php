@@ -12,15 +12,15 @@ class Customer extends Model
     //gaurded example - opposite of fillable
     protected $guarded = [];
 
+    protected $attributes =[
+      'active' => 1
+    ];
     public function scopeActive($query){
         return $query->where('active',1);
     }
 
     public function getActiveAttribute($attribute){
-        return [
-            0 => 'Inactive',
-            1 => 'Active'
-        ][$attribute];
+        return $this->getActiveOptions()[$attribute];
     }
 
     public function scopeInactive($query){
@@ -29,5 +29,13 @@ class Customer extends Model
 
     public function company(){
         return $this->belongsTo(Company::class);
+    }
+
+    public function getActiveOptions(){
+        return [
+            0 => 'Inactive',
+            1 => 'Active',
+            2 => 'In-Progress'
+        ];
     }
 }

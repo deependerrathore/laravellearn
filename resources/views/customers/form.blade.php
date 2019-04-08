@@ -12,8 +12,10 @@
     <label for="active">Status</label>
     <select class="form-control" name="active" id="active">
         <option value="" disabled>Select the customer status</option>
-        <option value="1">Active</option>
-        <option value="0">Inactive</option>
+
+        @foreach($customer->getActiveOptions() as $activeOptionsKey => $activeOptionsValue)
+            <option value="{{$activeOptionsKey}}" {{$customer->active == $activeOptionsValue?'selected':''}} >{{$activeOptionsValue}}</option>
+        @endforeach
     </select>
 </div>
 
@@ -21,7 +23,7 @@
     <label for="company">Company</label>
     <select class="form-control" name="company_id" id="company">
         @foreach($companies as $company)
-            <option value="{{$company->id}}">{{$company->name}}</option>
+            <option value="{{$company->id}}" {{$company->id == $customer->company_id ? 'selected' :''}}>{{$company->name}}</option>
         @endforeach
     </select>
 </div>
